@@ -1,0 +1,87 @@
+<div class="container">
+	<div class="jumbotron text-center">
+			<h1>TODOLY</h1>
+            <p>Your bare minimum to do list</p>
+    </div>
+</div>
+	
+<div class="container">
+	<div class="row">
+        <div class="col-md-3">
+            <h2>TODAY</h2>
+            <form action="todo/today" method="POST">
+                <input type="text" class="form-control" name="todo_name" value="" id="today_text">
+                <button type="submit" class="btn btn-primary" id="today-button">Do it</button>
+            </form>
+
+            {{#each today_data}}
+                {{#unless this.done}}
+                <p>{{this.id}}. {{this.todo_name}}<p>
+                    <br>
+                <form method="POST" action="/todo/update?_method=PUT" class="button-size">
+                    <input type="hidden" type="text" name="todo_id" value={{this.id}}><br>
+                    <button type="submit" class="btn btn-default">x</button>
+                </form>
+                {{/unless}}
+            {{/each}}
+        </div>
+
+        <div class="col-md-3">
+            <h2>TOMORROW</h2>
+            <form action="todo/tomorrow" method="POST">
+                <input type="text" class="form-control" name="todo_name" value="" id="tomorrow_text">
+                <button type="submit" class="btn btn-primary" id="tomorrow-button">Do it</button>
+            </form>
+
+            {{#each tomorrow_data}}
+                {{#unless this.done}}
+                <p>{{this.id}}. {{this.todo_name}}</p>
+                    <br>
+                <form method="POST" action="/todo/update?_method=PUT" class="button-size">
+                    <input type="hidden" type="text" name="todo_id" value={{this.id}}><br>
+                    <button type="submit" class="btn btn-default">x</button>
+                </form>
+                {{/unless}}
+            {{/each}}
+        </div>
+
+        <div class="col-md-3">
+            <h2>THIS WEEK</h2>
+            <form action="todo/thisweek" method="POST">
+                <input type="text" class="form-control" name="todo_name" value="" id="thisWeek_text">
+                <button type="submit" class="btn btn-primary" id="thisWeek-button">Do it</button>
+            </form>
+
+            {{#each thisWeek_data}}
+                {{#unless this.done}}
+                <p>{{this.id}}. {{this.todo_name}}
+                    <br>
+                <form method="POST" action="/todo/update?_method=PUT" class="button-size">
+                    <input type="hidden" type="text" name="todo_id" value={{this.id}}><br>
+                    <button type="submit" class="btn btn-default">x</button>
+                </form>
+                {{/unless}}
+            {{/each}}
+        </div>
+
+        <div class="col-md-3">
+            <h2>THIS MONTH</h2>
+            <form action="todo/thismonth" method="POST">
+                <input type="text" class="form-control" name="todo_name" value="" id="thisMonth_text">
+                <button type="submit" class="btn btn-primary" id="thisMonth-button">Do it</button>
+            </form>
+
+            {{#each thisMonth_data}}
+                {{#unless this.done}}
+                <p>{{this.id}}. {{this.todo_name}}
+                    <br>
+                <form method="POST" action="/todo/update?_method=PUT" class="button-size">
+                    <input type="hidden" type="text" name="todo_id" value={{this.id}}><br>
+                    <button type="submit" class="btn btn-default">x</button>
+                </form>
+                {{/unless}}
+            {{/each}}
+        </div>
+	</div>
+</div>		
+
